@@ -35,3 +35,10 @@ print("학생들의 점수 평균: ", average)
 
 # for i in range(0, 11):
 #     print(i)
+
+# 소숫점 이용하기
+# 외부 라이브러리 사용으로는 가능하지만
+# range 함수기준으로는 정수만 사용 가능
+
+for i in range(0, 5, 1):
+    print(i*0.1)
