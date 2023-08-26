@@ -31,6 +31,8 @@ answer = random.randrange(0, 10)
 user_input = -1
 
 # 사용자가 answer 맞출때까지 반복
+# 1. 사용자에게 기회주기(3번)
+# 2. 틀렸을때 updown 출력해주기
 
 while True:
     user_input = int(input("값을 입력하세요 >>"))
