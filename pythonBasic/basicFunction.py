@@ -41,15 +41,35 @@ def getHangmanInput():
         user_input = input("Input alphabet ::: ")
         if(user_input.isalpha()): # 알파벳인지 확인
             alphabet = user_input[0].lower()
-            if(hangman_input_history.index(alphabet)): # 이미 입렫뇌
+            if(alphabet in hangman_input_history ): # 이미 입력된 알파벳인지 확인
                 print("이미 입력한 값입니다. 새로운 알파벳을 입력해주세요.")
             else:
                 return alphabet
 
 def runHangMan():
-    hangman_input_history = []
+    hangman_input_history = [] # 초기화용 코드
+    chance = 7
+
     word = getRandomWord()
-    alphabet = getHangmanInput()
+
+    while chance > 0:
+        alphabet = getHangmanInput()
+
+        hangman_input_history.append(alphabet)
+
+        if word.find(alphabet) != -1:  # alphabet이 word에 속해있으면 정답이라고 알려주고, 아니면 기회를 깎기.
+            print("CORRECT!")
+        else:
+            chance = chance - 1
+            print("LEFT CHANCE : ", chance)
+
+    # 1. 모든 정답을 맞췄을때 게임이 끝나지 않음
+    # -> 맞추면 alive  출력해주고 그만하기 (break문을 사용)
+
+    # 2. 내가 맞춘 정답들이 어디에 위치해있는지 알수없음
+    # -> s _ _ s _ _ _ 출력
+    # printCorrectWords() 함수를 선언(optional)해서 그 안에서 입력되었던 맞는 항목을 위치에 맞게 출력
+
 
 
 def runUpDown():
