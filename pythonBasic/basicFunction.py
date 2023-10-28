@@ -47,13 +47,16 @@ def getHangmanInput():
                 return alphabet
 
 def runHangMan():
-    hangman_input_history = [] # 초기화용 코드
+    global hangman_input_history
+
+    # 초기화용 코드
+    hangman_input_history = []
     chance = 7
 
     word = getRandomWord()
 
     while chance > 0:
-        alphabet = getHangmanInput()
+        alphabet = str(getHangmanInput())
 
         hangman_input_history.append(alphabet)
 
