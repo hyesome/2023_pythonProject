@@ -46,6 +46,17 @@ def getHangmanInput():
             else:
                 return alphabet
 
+def printPresentWords(word):
+    printStr = ""
+    for i in word:
+        if i in hangman_input_history:
+            printStr = printStr + i
+        else:
+            printStr = printStr + "_"
+        printStr = printStr + " "
+
+    print(printStr)
+
 def runHangMan():
     global hangman_input_history
 
@@ -58,6 +69,9 @@ def runHangMan():
     wordSet = set(word)
 
     while chance > 0:
+
+        printPresentWords(word)
+
         alphabet = str(getHangmanInput())
 
         hangman_input_history.append(alphabet)
@@ -73,22 +87,6 @@ def runHangMan():
             print("Alive!")
             break
 
-        printStr = ""
-        for i in word:
-            if i in hangman_input_history:
-                printStr = printStr + i
-            else:
-                printStr = printStr + "_"
-            printStr = printStr + " "
-
-        print(printStr)
-
-
-
-
-    # 2. 내가 맞춘 정답들이 어디에 위치해있는지 알수없음
-    # -> s _ _ s _ _ _ 출력
-    # printCorrectWords() 함수를 선언(optional)해서 그 안에서 입력되었던 맞는 항목을 위치에 맞게 출력
 
 
 
