@@ -73,6 +73,16 @@ def runHangMan():
             print("Alive!")
             break
 
+        printStr = ""
+        for i in word:
+            if i in hangman_input_history:
+                printStr = printStr + i
+            else:
+                printStr = printStr + "_"
+            printStr = printStr + " "
+
+        print(printStr)
+
 
 
 
