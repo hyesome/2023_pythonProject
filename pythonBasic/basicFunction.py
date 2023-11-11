@@ -46,32 +46,52 @@ def getHangmanInput():
             else:
                 return alphabet
 
+def printPresentWords(word):
+    printStr = ""
+    for i in word:
+        if i in hangman_input_history:
+            printStr = printStr + i
+        else:
+            printStr = printStr + "_"
+        printStr = printStr + " "
+
+    print(printStr)
+
 def runHangMan():
     global hangman_input_history
 
     # 초기화용 코드
     hangman_input_history = []
     chance = 7
+    correct = 0
 
     word = getRandomWord()
+    wordSet = set(word)
 
     while chance > 0:
+
+        printPresentWords(word)
+
         alphabet = str(getHangmanInput())
 
         hangman_input_history.append(alphabet)
 
         if word.find(alphabet) != -1:  # alphabet이 word에 속해있으면 정답이라고 알려주고, 아니면 기회를 깎기.
+            correct = correct +1
             print("CORRECT!")
         else:
             chance = chance - 1
-            print("LEFT CHANCE : ", chance)
 
-    # 1. 모든 정답을 맞췄을때 게임이 끝나지 않음
-    # -> 맞추면 alive  출력해주고 그만하기 (break문을 사용)
+            if chance == 0:
+                print("You Die")
+            else:
+                print("LEFT CHANCE : ", chance)
 
-    # 2. 내가 맞춘 정답들이 어디에 위치해있는지 알수없음
-    # -> s _ _ s _ _ _ 출력
-    # printCorrectWords() 함수를 선언(optional)해서 그 안에서 입력되었던 맞는 항목을 위치에 맞게 출력
+
+        if correct >= len(wordSet): # 정답을 맞췄을때 게임 종료
+            print("Alive!")
+            break
+
 
 
 
