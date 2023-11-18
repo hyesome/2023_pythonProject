@@ -47,7 +47,7 @@ def addNewBlock():
         if board[randomX][randomY] == -1:
             canSet = True
 
-    board[randomX][randomY] = 2 if random.randint(1, 10) < 10 else 4
+    board[randomX][randomY] = 2 if random.randint(1, 10) < 10 else 4  # 10분의 1 확률로 4, 이외에는 2가 추가되도록
 
 def setEventListener():
     global isGameRunning
