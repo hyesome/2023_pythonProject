@@ -52,6 +52,11 @@ def addNewBlock():
 def setEventListener():
     global isGameRunning
     for event in pygame.event.get():
+
+        if event.type == pygame.QUIT:
+            isGameRunning = False
+            return
+
         if event.type == pygame.KEYUP:
             if event.key == pygame.K_q:
                 isGameRunning = False
